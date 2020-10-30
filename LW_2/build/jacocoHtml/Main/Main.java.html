@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LW_2</a> &gt; <a href="index.source.html" class="el_package">Main</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package Main;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+<span class="nc" id="L6">public class Main {</span>
+
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        Parser stringParser = new Parser();
+//        FileWork userFile = new FileWork();
+//        ArrayList&lt;String&gt; Strings = new ArrayList&lt;&gt;();
+//        ArrayList&lt;String&gt; blockSizes = new ArrayList&lt;&gt;();
+//        ArrayList&lt;ArrayList&lt;String&gt;&gt; splitStrings = new ArrayList&lt;ArrayList&lt;String&gt;&gt;();
+//        String buff_string = &quot;&quot;;
+//        String inputSeparator;
+//        String outputSeparator;
+//        String inputCSVPath;
+//        String outputFilePath;
+//        do {
+//            System.out.print(&quot;Enter input separator: &quot;);
+//            inputSeparator = scanner.nextLine();
+//            if (inputSeparator.length()!=1){
+//                System.out.println(&quot;Enter no more than one character!&quot;);
+//            }
+//        }while (inputSeparator.length()!=1);
+//        System.out.print(&quot;Enter .csv file path: &quot;);
+//        inputCSVPath = scanner.nextLine();
+//        File test = new File(inputCSVPath);
+//        if (!test.isFile()) {
+//            System.out.println(&quot;No such file exists! Exiting...&quot;);
+//            System.exit(0);
+//        }
+//        do {
+//            System.out.print(&quot;Enter output separator: &quot;);
+//            outputSeparator = scanner.nextLine();
+//            if (outputSeparator.length()!=1){
+//                System.out.println(&quot;Enter no more than one character!&quot;);
+//            }
+//        }while (outputSeparator.length()!=1);
+//        System.out.print(&quot;Enter output file path: &quot;);
+//        outputFilePath = scanner.nextLine();
+//        userFile.setInputPath(inputCSVPath);
+//        userFile.setOutputPath(outputFilePath);
+//        stringParser.setInputSeparator(inputSeparator.charAt(0));
+//        stringParser.setOutputSeparator(outputSeparator.charAt(0));
+//        Strings = userFile.readByLine();
+//        splitStrings = stringParser.lightParseStrings(Strings);
+//        blockSizes = stringParser.blockSizes(splitStrings);
+//        userFile.writeByLine(blockSizes,false);
+//
+//        System.out.println(&quot;Recording completed successfully&quot;);
+//    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

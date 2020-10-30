@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LW_3_test" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-10-30T21:47:04" hostname="DESKTOP-AG6SFRS" time="0.007">
+  <properties/>
+  <testcase name="transformTest_int" classname="LW_3_test" time="0.003"/>
+  <testcase name="transformTest_str" classname="LW_3_test" time="0.0"/>
+  <testcase name="filterTest_int" classname="LW_3_test" time="0.001"/>
+  <testcase name="filterTest_str" classname="LW_3_test" time="0.0"/>
+  <testcase name="transformTest_float" classname="LW_3_test" time="0.0"/>
+  <testcase name="filterTest_bool" classname="LW_3_test" time="0.0"/>
+  <testcase name="filterTest_float" classname="LW_3_test" time="0.0"/>
+  <testcase name="transformTest_bool" classname="LW_3_test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

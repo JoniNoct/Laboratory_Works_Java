@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LW_1_Tester" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-10-01T15:04:02" hostname="DESKTOP-AG6SFRS" time="0.023">
+  <properties/>
+  <testcase name="testLightParseStrings" classname="LW_1_Tester" time="0.019"/>
+  <testcase name="testHardParseStrings" classname="LW_1_Tester" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
