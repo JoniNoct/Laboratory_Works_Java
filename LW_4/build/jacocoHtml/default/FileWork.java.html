@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileWork.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LW_4</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">FileWork.java</span></div><h1>FileWork.java</h1><pre class="source lang-java linenums">import java.io.*;
+import java.util.ArrayList;
+
+public class FileWork {
+    private String inputPath;
+    private String outputPath;
+
+<span class="fc" id="L8">    public FileWork(String inPath, String outPath) {</span>
+<span class="fc" id="L9">        this.inputPath = inPath;</span>
+<span class="fc" id="L10">        this.outputPath = outPath;</span>
+<span class="fc" id="L11">    }</span>
+
+    public void setInputPath(String inputPath) {
+<span class="fc" id="L14">        this.inputPath = inputPath;</span>
+<span class="fc" id="L15">    }</span>
+//
+//    public void setOutputPath(String outputPath) {
+//        this.outputPath = outputPath;
+//    }
+//
+//    public String getInputPath() {
+//        return inputPath;
+//    }
+//
+//    public String getOutputPath() {
+//        return outputPath;
+//    }
+
+    public ArrayList&lt;String&gt; readByLine() {
+<span class="fc" id="L30">        ArrayList&lt;String&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L31">        String buffer = &quot;&quot;;</span>
+
+<span class="fc" id="L33">        try(BufferedReader reader = new BufferedReader (new FileReader(inputPath))){</span>
+            String temp;
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            while((temp=reader.readLine())!=null){</span>
+<span class="fc" id="L36">                result.add(temp);</span>
+            }
+        }
+<span class="nc" id="L39">        catch(IOException ex){</span>
+<span class="nc" id="L40">            System.out.println(ex.getMessage());</span>
+<span class="fc" id="L41">        }</span>
+
+<span class="fc" id="L43">        return result;</span>
+    }
+
+    public void writeByLine(ArrayList&lt;String&gt; Strings) {
+<span class="fc" id="L47">        try(FileWriter writer = new FileWriter(outputPath,true)){</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">            for (int i = 0; i &lt; Strings.size(); i++) {</span>
+<span class="fc" id="L49">                writer.write(Strings.get(i).toString()+&quot;\r&quot;);</span>
+            }
+        }
+<span class="nc" id="L52">        catch(IOException ex){</span>
+<span class="nc" id="L53">            System.out.println(ex.getMessage());</span>
+<span class="fc" id="L54">        }</span>
+<span class="fc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

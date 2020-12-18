@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Parser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LW_4</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Parser.java</span></div><h1>Parser.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+
+public class Parser {
+    private char inputSeparator;
+    private char outputSeparator;
+    private String inputCSVPath;
+    private String outputFilePath;
+<span class="fc" id="L8">    public int current_threads = 0;</span>
+<span class="fc" id="L9">    public int current_line = 0;</span>
+<span class="fc" id="L10">    public ArrayList&lt;String&gt; content = null;</span>
+
+<span class="fc" id="L12">    public Parser(String inSeparator, String outSeparator, String inCSVPath, String outFilePath) {</span>
+<span class="fc" id="L13">        this.inputSeparator = inSeparator.charAt(0);</span>
+<span class="fc" id="L14">        this.outputSeparator = outSeparator.charAt(0);</span>
+<span class="fc" id="L15">        this.inputCSVPath = inCSVPath;</span>
+<span class="fc" id="L16">        this.outputFilePath = outFilePath;</span>
+<span class="fc" id="L17">    }</span>
+
+//    public void setInputSeparator(char inputSeparator) {
+//        this.inputSeparator = inputSeparator;
+//    }
+//
+//    public void setOutputSeparator(char outputSeparator) {
+//        this.outputSeparator = outputSeparator;
+//    }
+//
+//    public char getInputSeparator() {
+//        return inputSeparator;
+//    }
+//
+//    public char getOutputSeparator() {
+//        return outputSeparator;
+//    }
+
+    public ArrayList&lt;String&gt; lightParseStrings(String str) {
+<span class="fc" id="L36">        ArrayList&lt;String&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L37">        String bufferString = &quot;&quot;;</span>
+<span class="fc" id="L38">        int startIndex = 0;</span>
+<span class="fc" id="L39">        int finishIndex = 0;</span>
+<span class="fc" id="L40">        boolean mirror = false;</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (int i = 0; i &lt; str.length(); i++) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (str.charAt(i) == inputSeparator){</span>
+<span class="fc" id="L44">                result.add(bufferString+str.substring(startIndex,finishIndex));</span>
+<span class="fc" id="L45">                bufferString = &quot;&quot;;</span>
+<span class="fc" id="L46">                finishIndex++;</span>
+<span class="fc" id="L47">                startIndex = finishIndex;</span>
+<span class="pc bpc" id="L48" title="3 of 4 branches missed.">                if ((i==str.length()-1)&amp;&amp;(str.charAt(i) == inputSeparator)){</span>
+<span class="nc" id="L49">                    result.add(&quot;&quot;);</span>
+                }
+            }
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            else if ((i==str.length()-1)) {</span>
+<span class="fc" id="L53">                result.add(bufferString+str.substring(startIndex,finishIndex+1));</span>
+<span class="fc" id="L54">                bufferString = &quot;&quot;;</span>
+            }
+<span class="fc bfc" id="L56" title="All 4 branches covered.">            else if ((str.charAt(i) == '\&quot;') &amp;&amp; (i==startIndex)){</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">                for (int k = startIndex+1; k &lt; str.length(); k++) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                    if (str.charAt(k) == '\&quot;'){</span>
+<span class="fc" id="L59">                        mirror = true;</span>
+<span class="fc" id="L60">                        finishIndex=k;</span>
+<span class="fc" id="L61">                        break;</span>
+                    }
+                }
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">                if (mirror){</span>
+<span class="fc" id="L65">                    bufferString += str.substring(startIndex+1,finishIndex);</span>
+<span class="fc" id="L66">                    mirror = false;</span>
+<span class="fc" id="L67">                    i = finishIndex;</span>
+<span class="fc" id="L68">                    finishIndex++;</span>
+<span class="fc" id="L69">                    startIndex = finishIndex;</span>
+                }
+                else {
+<span class="nc" id="L72">                    finishIndex++;</span>
+                }
+            }
+            else{
+<span class="fc" id="L76">                finishIndex++;</span>
+            }
+        }
+
+<span class="fc" id="L80">        return result;</span>
+    }
+
+    public String blockSizes(ArrayList&lt;String&gt; splitStrings){
+<span class="fc" id="L84">        String result = &quot;&quot;;</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        for (int i = 0; i &lt; splitStrings.size(); i++) {</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">            if (i!=(splitStrings.size()-1)){</span>
+<span class="fc" id="L87">                result += splitStrings.get(i).length();</span>
+<span class="fc" id="L88">                result += outputSeparator;</span>
+            }
+            else
+<span class="fc" id="L91">                result += splitStrings.get(i).length();</span>
+        }
+<span class="fc" id="L93">        return result;</span>
+    }
+
+    public void Thread_Parse(int thread_size) throws InterruptedException {
+<span class="fc" id="L97">        FileWork file = new FileWork(this.inputCSVPath, this.outputFilePath);</span>
+<span class="fc" id="L98">        this.content = file.readByLine();</span>
+
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        while (current_line&lt;content.size()) {</span>
+<span class="fc" id="L101">            System.out.println(current_threads);</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">            if (current_threads&lt;thread_size) {</span>
+<span class="fc" id="L103">                LineThread thrd = new LineThread(this, current_line);</span>
+<span class="fc" id="L104">                Thread b = new Thread(thrd);</span>
+<span class="fc" id="L105">                b.start();</span>
+<span class="fc" id="L106">                current_threads++;</span>
+<span class="fc" id="L107">                current_line++;</span>
+<span class="fc" id="L108">            }</span>
+        }
+<span class="fc" id="L110">        Thread.sleep(1000);</span>
+
+<span class="fc" id="L112">        file.writeByLine(this.content);</span>
+<span class="fc" id="L113">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LW_4_Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-12-18T22:52:12" hostname="DESKTOP-AG6SFRS" time="1.034">
+  <properties/>
+  <testcase name="testLPSandBS" classname="LW_4_Test" time="0.021"/>
+  <testcase name="testThread_Parse" classname="LW_4_Test" time="1.012"/>
+  <system-out><![CDATA[0
+1
+2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
